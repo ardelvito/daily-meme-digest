@@ -9,10 +9,16 @@
     android:background="@color/purple_200">
 
     <FrameLayout
-        android:id="@+id/frame_layout"
+        android:id="@+id/fragmentContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
+        >
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
     <com.google.android.material.bottomappbar.BottomAppBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,13 +40,14 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_meme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_add"
         app:layout_anchor="@id/bottomAppBar"
-        app:tint = "@color/purple_200"
-        app:maxImageSize="40dp">
+        app:maxImageSize="40dp"
+        app:tint="@color/purple_200">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 

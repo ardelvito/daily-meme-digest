@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
+        android:id="@+id/navi_home"
         android:title="Home"
         android:icon="@drawable/ic_home" />
 
     <item
-        android:id="@+id/creation"
+        android:id="@+id/navi_creation"
         android:title="My Creation"
         android:icon="@drawable/ic_creation" />
 
     <item
-        android:id="@+id/fab"
+        android:id="@+id/fab_meme"
         android:title=""
-        android:enabled="false"/>
+        />
     <item
-        android:id="@+id/leaderboard"
+        android:id="@+id/navi_leaderboard"
         android:title="Leaderboard"
         android:icon="@drawable/ic_barchart" />
     <item
-        android:id="@+id/settings"
+        android:id="@+id/navi_settings"
         android:title="Settings"
         android:icon="@drawable/ic_settings" />
 

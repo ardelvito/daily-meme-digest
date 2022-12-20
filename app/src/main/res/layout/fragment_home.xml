@@ -28,11 +28,14 @@
                 android:id="@+id/textView19"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="901dp"
                 android:background="@color/purple_200"
                 android:gravity="center"
                 android:text="Home Fragment"
                 android:textColor="@color/white"
-                android:textSize="30dp" />
+                android:textSize="30dp"
+                app:layout_constraintBottom_toTopOf="@+id/imageView3"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
