@@ -37,9 +37,9 @@ class Login : AppCompatActivity() {
                 Request.Method.POST,
                 url, Response.Listener {
                     Log.d("cekparams", it)
-//                    val obj = JSONObject(it)
+                    var obj = JSONObject(it)
                     Log.d("IT", it.toString())
-//                    result = obj.getString("result")
+                    result = obj.getString("result")
 //                    if(result == "Success"){
 //                        Log.d("Succcess", "Login")
 //                    }
@@ -58,6 +58,7 @@ class Login : AppCompatActivity() {
                     val map = HashMap<String, String>()
                     map.set("username", username)
                     map.set("password", password)
+                    Log.d("MAP", map.toString())
                     return map
                 }
             }
