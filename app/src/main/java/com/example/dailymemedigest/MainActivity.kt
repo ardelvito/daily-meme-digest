@@ -50,6 +50,10 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
+        fab_meme.setOnClickListener(){
+            Log.d("FAB", "CLICKED")
+        }
+
     }
 
 
@@ -85,9 +89,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Fragment", "Settings")
                 
             }
-            else if(it.itemId == R.id.fab_meme){
-                Log.d("FAB", "Clicked")
-            }
+
             true
 
         }
