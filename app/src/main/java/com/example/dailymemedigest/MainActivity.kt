@@ -17,6 +17,11 @@ import kotlinx.android.synthetic.main.login_page.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object{
+        val EXTRA_USERNAME = "EXTRA_USERNAME"
+    }
+
+
     val fragHome: Fragment = HomeFragment()
     val fragLeaderboard: Fragment = LeaderboardFragment()
     val fragCreation: Fragment = CreationFragment()
@@ -46,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                     bottomNavigationView.selectedItemId =
                         bottomNavigationView.menu.getItem(position).itemId
                 }
-
             }
         )
 

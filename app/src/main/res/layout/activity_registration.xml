@@ -12,7 +12,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="900dp" >
 
             <Button
                 android:id="@+id/btnBackLogin"
@@ -30,14 +30,14 @@
                 android:id="@+id/btnCreate"
                 android:layout_width="335dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="52dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="#9C27B0"
                 android:text="Create Account"
                 android:textColor="@color/white"
                 android:textColorHighlight="#9C27B0"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtRepeatPassword" />
+                app:layout_constraintTop_toBottomOf="@+id/cbPrivate" />
 
             <EditText
                 android:id="@+id/txtUsername"
@@ -70,6 +70,36 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+            <EditText
+                android:id="@+id/txtFirstName"
+                android:layout_width="335dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/ic_baseline_person_add_24"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_thin"
+                android:hint="First Name"
+                android:minHeight="48dp"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <EditText
+                android:id="@+id/txtLastName"
+                android:layout_width="335dp"
+                android:layout_height="51dp"
+                android:layout_marginTop="132dp"
+                android:drawableLeft="@drawable/ic_baseline_person_add_alt_24"
+                android:ems="10"
+                android:fontFamily="@font/montserrat_thin"
+                android:hint="Last Name"
+                android:minHeight="48dp"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <EditText
                 android:id="@+id/txtPassword"
@@ -114,6 +144,32 @@
                 app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
             <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="First Name"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.129"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRepeatPassword" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="136dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Last Name"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.129"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRepeatPassword" />
+
+            <TextView
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -148,6 +204,19 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+            <CheckBox
+                android:id="@+id/cbPrivate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Private"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.148"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtLastName" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
