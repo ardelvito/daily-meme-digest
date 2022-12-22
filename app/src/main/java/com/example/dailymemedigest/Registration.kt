@@ -32,7 +32,7 @@ class Registration : AppCompatActivity() {
             }
             else{
                 val q = Volley.newRequestQueue(it.context)
-                val url = "https://ubaya.fun/native/160420024/memes_api/user_login.php"
+                val url = "https://ubaya.fun/native/160420024/memes_api/user_regis.php"
 
                 val stringRequest = object: StringRequest(
                     Request.Method.POST,
