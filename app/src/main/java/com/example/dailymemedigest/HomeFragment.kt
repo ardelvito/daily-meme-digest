@@ -52,8 +52,12 @@ class HomeFragment : Fragment() {
                             memeObj.getString("created_at"),
                             memeObj.getString("top_text_color"),
                             memeObj.getString("bottom_text_color"),
-                            memeObj.getInt("total_komen")
-                            )
+                            memeObj.getInt("total_komen"),
+                            false,
+                            memeObj.getString("username"),
+                            memeObj.getInt("day_differ"),
+                            memeObj.getInt("hours_differ")
+                        )
                         memesList.add(meme)
                     }
                     updateList()

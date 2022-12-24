@@ -19,6 +19,7 @@ class Login : AppCompatActivity() {
 
     companion object{
         val SHARED_PLAYER_USERNAME = "SHARED_PLAYER_USERNAME"
+        val SHARED_PLAYER_ID = "SHARED_PLAYER_ID"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +30,10 @@ class Login : AppCompatActivity() {
         var sharedName = packageName
         var shared = getSharedPreferences(sharedName, Context.MODE_PRIVATE)
         var username_shared = shared.getString(SHARED_PLAYER_USERNAME, null)
+        var id_shared = shared.getInt(SHARED_PLAYER_ID, 0)
         val intent = Intent(this, MainActivity::class.java)
 //        Toast.makeText(this, username_shared, Toast.LENGTH_SHORT).show()
-        if(username_shared != null){
+        if(id_shared != null){
             startActivity(intent)
         }
 
@@ -56,8 +58,10 @@ class Login : AppCompatActivity() {
                     val result = obj.getString("result")
                     val message = obj.getString("message")
                     if(result == "Success"){
+                        val userId = obj.getInt("user_id")
                         var editor = shared.edit()
                         editor.putString(SHARED_PLAYER_USERNAME, username)
+                        editor.putInt(SHARED_PLAYER_ID, userId)
                         editor.apply()
                         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                         startActivity(intent)
