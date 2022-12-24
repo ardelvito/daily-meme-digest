@@ -7,12 +7,14 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="320dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="95dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -55,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Comment!"
+                android:textSize="10sp"
                 app:icon="@drawable/ic_baseline_mode_comment_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.448"
@@ -66,6 +69,7 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:text="Likes"
                 android:textColor="#000000"
@@ -73,10 +77,10 @@
                 app:icon="@drawable/ic_baseline_thumb_up_alt_24"
                 app:iconSize="20dp"
                 app:iconTint="#FF0000"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.056"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgMemes" />
+                app:layout_constraintTop_toBottomOf="@+id/imgMemes"
+                app:layout_constraintVertical_bias="0.0" />
 
             <TextView
                 android:id="@+id/memesTopText"

@@ -19,11 +19,11 @@ class HomeFragment : Fragment() {
     var memesList:ArrayList<Meme> = ArrayList()
 
     fun updateList(){
-        val lm:LayoutManager = LinearLayoutManager(activity)
-        var recyclerView = view?.findViewById<RecyclerView>(R.id.memesView)
-        recyclerView?.layoutManager = lm
-        recyclerView?.setHasFixedSize(true)
-        recyclerView?.adapter = HomeAdapter(memesList)
+        val lm:LinearLayoutManager = LinearLayoutManager(activity)
+        val rv = view?.findViewById<RecyclerView>(R.id.memesView)
+        rv?.layoutManager = lm
+        rv?.setHasFixedSize(true)
+        rv?.adapter = HomeAdapter(memesList)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +34,7 @@ class HomeFragment : Fragment() {
         var stringRequest = StringRequest(
             Request.Method.POST,
             url,
-            Response.Listener{
-                Log.d("apiresult", it)
+            {
                 val obj = JSONObject(it)
                 if(obj.getString("result") == "OK"){
                     val data = obj.getJSONArray("data")
@@ -52,16 +51,18 @@ class HomeFragment : Fragment() {
                             memeObj.getInt("total_likes"),
                             memeObj.getString("created_at"),
                             memeObj.getString("top_text_color"),
-                            memeObj.getString("bottom_text_color")
-                        )
+                            memeObj.getString("bottom_text_color"),
+                            memeObj.getInt("total_komen")
+                            )
                         memesList.add(meme)
                     }
                     updateList()
                 }
-            }, Response.ErrorListener{
+            }, {
                 Log.e("apiresult", it.message.toString())
             })
         q.add(stringRequest)
+
     }
 
     override fun onCreateView(
