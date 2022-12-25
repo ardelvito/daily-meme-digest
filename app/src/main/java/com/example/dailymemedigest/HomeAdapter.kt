@@ -1,12 +1,14 @@
 package com.example.dailymemedigest
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +16,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.squareup.picasso.Picasso
 import com.android.volley.Request
+import kotlinx.android.synthetic.main.memes_card.*
 import kotlinx.android.synthetic.main.memes_card.view.*
 import org.json.JSONObject
 
@@ -97,6 +100,52 @@ class HomeAdapter(private val memes:ArrayList<Meme>, private val user_id:Int)
                 }
             }
             q.add(stringRequest)
+            //endregion
+
+            //region btn likes
+            btnLikes.setOnClickListener{
+                val q = Volley.newRequestQueue(this.context)
+                val urlVol = "https://ubaya.fun/native/160420024/memes_api/set_likes.php"
+                val stringRequest = object : StringRequest(
+                    Request.Method.POST,
+                    urlVol, {
+                        val obj = JSONObject(it)
+                        Log.d("cekparamsSetLikes", it)
+                        if(obj.getString("result") == "OK"){
+                            val statLike = obj.getInt("status")
+                            if(statLike == 1){
+                                memes[posisi].total_likes += 1
+                                btnLikes.icon = ContextCompat.getDrawable(this.context, R.drawable.ic_baseline_thumb_up_alt_24)
+                            }
+                            else{
+                                memes[posisi].total_likes -= 1
+                                btnLikes.icon = ContextCompat.getDrawable(this.context, R.drawable.ic_baseline_thumb_up_off_alt_24)
+                            }
+                            btnLikes.text = memes[posisi].total_likes.toString() + "Likes"
+                            Toast.makeText(this.context, "Berhasil melakukan likes!", Toast.LENGTH_SHORT).show()
+                        }
+                    }, {
+                        Log.e("apiresult", it.message.toString())
+                    }
+                )
+                {
+                    override fun getParams(): MutableMap<String, String>? {
+                        val map = HashMap<String, String>()
+                        map.set("id_memes", memes[posisi].id.toString())
+                        map.set("id_user", user_id.toString())
+                        return map
+                    }
+                }
+                q.add(stringRequest)
+            }
+            //endregion
+
+            //region btn comment
+            btnComment.setOnClickListener{
+                val intent = Intent(this.context, memeDetails::class.java)
+                this.context.startActivity(intent)
+            }
+
             //endregion
         }
     }

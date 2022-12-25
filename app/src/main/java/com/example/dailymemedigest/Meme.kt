@@ -2,18 +2,18 @@ package com.example.dailymemedigest
 
 import java.util.Date
 
-data class Meme(val id: Int,
-                val url: String,
-                val top_text: String,
-                val bot_text: String,
-                val users_id: Int,
-                val total_likes: Int,
-                val created_at: String,
-                val top_text_color: String,
-                val bot_text_color: String,
-                val total_komen: Int,
+data class Meme(var id: Int,
+                var url: String,
+                var top_text: String,
+                var bot_text: String,
+                var users_id: Int,
+                var total_likes: Int,
+                var created_at: String,
+                var top_text_color: String,
+                var bot_text_color: String,
+                var total_komen: Int,
                 var expandable: Boolean = false,
-                val username: String,
-                val day: Int,
-                val hours: Int
+                var username: String,
+                var day: Int,
+                var hours: Int
 )

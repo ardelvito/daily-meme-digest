@@ -1,6 +1,7 @@
 package com.example.dailymemedigest
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -16,6 +17,8 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.fragment_setting.*
+import kotlinx.android.synthetic.main.memes_card.*
+import kotlinx.android.synthetic.main.memes_card.view.*
 import org.json.JSONObject
 
 class HomeFragment : Fragment() {
