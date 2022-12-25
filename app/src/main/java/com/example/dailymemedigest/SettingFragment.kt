@@ -1,5 +1,7 @@
 package com.example.dailymemedigest
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,8 +10,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ToggleButton
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_setting.*
+import kotlinx.android.synthetic.main.fragment_setting.view.*
+import kotlinx.android.synthetic.main.login_page.view.*
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.memes_card.view.*
+import org.json.JSONObject
+import java.net.URL
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,6 +44,8 @@ class SettingFragment : Fragment() {
     var togglePrivacy: ToggleButton? = null
     var btnEdit: Button? = null
 
+    lateinit var preferences: SharedPreferences
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +54,57 @@ class SettingFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        val sharedName = this.activity?.packageName
+        preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+        val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
+
+        val q = Volley.newRequestQueue(activity)
+        val url = "https://ubaya.fun/native/160420024/memes_api/get_userprofile.php"
+
+        val stringRequest = object : StringRequest(
+            Request.Method.POST,
+            url, Response.Listener{
+                Log.d("Cek Parameter Settings", it.toString())
+                val obj = JSONObject(it)
+                val result = obj.getString("result")
+                if(result == "OK"){
+                    Log.d("Status", "Berhasil Baca")
+                    val arrData = obj.getJSONArray("data")
+                    val userObj = arrData.getJSONObject(0)
+
+                    val firstName = userObj.getString("first_name")
+                    val lastName = userObj.getString("last_name")
+                    val registDate = userObj.getString("regis_date")
+                    val avatarLink = userObj.getString("avatar_link")
+                    val private = userObj.getInt("private")
+
+                    Picasso.get().load(avatarLink).into(circleImgBorder)
+//                    imageView2.setImageDrawable()
+                    txtInputFirstName.editText?.setText(firstName)
+                    txtInputLastName.editText?.setText(lastName)
+                    Log.d("First Name", firstName)
+
+
+                }
+            }
+
+            ,
+            {
+            Response.ErrorListener{
+                Log.d("Cek Parameter", it.message.toString())
+                }
+            }
+        )
+        {
+            override fun getParams(): MutableMap<String, String>? {
+                val map = HashMap<String, String>()
+                map.set("user_id", id_user.toString())
+                Log.d("MAP", map.toString())
+                return map
+            }
+
+        }
+        q.add(stringRequest)
     }
 
     override fun onCreateView(
@@ -57,8 +123,17 @@ class SettingFragment : Fragment() {
         txtLastName?.isEnabled = false
         togglePrivacy?.isEnabled = false
 
+//        val sharedName = this.activity?.packageName
+//        preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+//        val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
+
+
+
+
+
         btnEdit?.setOnClickListener{
             Log.d("Btn Edit", "Clicked")
+//            Log.d("ID User", id_user.toString())
         }
 
 
