@@ -66,7 +66,7 @@
                 app:layout_constraintStart_toEndOf="@+id/btnMore"
                 app:layout_constraintTop_toBottomOf="@+id/imgMemes" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLikes"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
@@ -76,13 +76,14 @@
                 android:text="Likes"
                 android:textColor="#000000"
                 android:textSize="10dp"
-                app:icon="@drawable/ic_baseline_thumb_up_alt_24"
+                app:icon="@drawable/ic_baseline_thumb_up_off_alt_24"
                 app:iconSize="20dp"
                 app:iconTint="#FF0000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgMemes"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                app:toggleCheckedStateOnClick="false" />
 
             <TextView
                 android:id="@+id/memesTopText"

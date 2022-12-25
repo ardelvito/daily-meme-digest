@@ -1,0 +1,21 @@
+DELIMITER $
+CREATE TRIGGER count_likes AFTER UPDATE ON meme_likes
+FOR EACH ROW 
+BEGIN
+	DECLARE v_total_likes INT DEFAULT 0;
+    
+    SELECT SUM(stat_like) FROM meme_likes WHERE meme_id = NEW.meme_id INTO v_total_likes;
+    UPDATE memes SET total_likes = v_total_likes WHERE id = NEW.meme_id;
+END $
+Delimiter ;
+
+DELIMITER $
+CREATE TRIGGER count_likes AFTER INSERT ON meme_likes
+FOR EACH ROW 
+BEGIN
+	DECLARE v_total_likes INT DEFAULT 0;
+    
+    SELECT SUM(stat_like) FROM meme_likes WHERE meme_id = NEW.meme_id INTO v_total_likes;
+    UPDATE memes SET total_likes = v_total_likes WHERE id = NEW.meme_id;
+END $
+Delimiter ;

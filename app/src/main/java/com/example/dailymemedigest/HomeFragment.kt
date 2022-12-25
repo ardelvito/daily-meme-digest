@@ -1,5 +1,7 @@
 package com.example.dailymemedigest
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,17 +15,26 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.fragment_setting.*
 import org.json.JSONObject
 
 class HomeFragment : Fragment() {
     var memesList:ArrayList<Meme> = ArrayList()
+    lateinit var preferences: SharedPreferences
+    var username: String = ""
+    var user_id: Int = 0
 
     fun updateList(){
+        val sharedName = this.activity?.packageName
+        preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+        val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
+        user_id = id_user
+
         val lm:LinearLayoutManager = LinearLayoutManager(activity)
         val rv = view?.findViewById<RecyclerView>(R.id.memesView)
         rv?.layoutManager = lm
         rv?.setHasFixedSize(true)
-        rv?.adapter = HomeAdapter(memesList)
+        rv?.adapter = HomeAdapter(memesList, user_id)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

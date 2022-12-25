@@ -33,7 +33,7 @@ class Login : AppCompatActivity() {
         var id_shared = shared.getInt(SHARED_PLAYER_ID, 0)
         val intent = Intent(this, MainActivity::class.java)
 //        Toast.makeText(this, username_shared, Toast.LENGTH_SHORT).show()
-        if(id_shared != null){
+        if(id_shared > 0){
             startActivity(intent)
         }
 
