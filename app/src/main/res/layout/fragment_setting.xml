@@ -47,12 +47,13 @@
                 android:id="@+id/txtActiveDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="3dp"
+                android:layout_marginEnd="16dp"
                 android:text="Active Since September 2022"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtUserFullName" />
 
@@ -123,15 +124,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtInputLastName" />
 
-            <ToggleButton
-                android:id="@+id/togglePrivacy"
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchPrivacy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                android:text="ToggleButton"
+                android:thumb="@drawable/thumb_toggle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView" />
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                app:track="@drawable/track_toggle" />
 
             <Button
                 android:id="@+id/btnEditProfile"
@@ -144,7 +146,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.117"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/togglePrivacy" />
+                app:layout_constraintTop_toBottomOf="@+id/switchPrivacy" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

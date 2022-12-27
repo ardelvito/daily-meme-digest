@@ -10,10 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ToggleButton
+import androidx.appcompat.widget.SwitchCompat
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
@@ -23,6 +25,7 @@ import kotlinx.android.synthetic.main.memes_card.view.*
 import org.json.JSONObject
 import java.net.URL
 import java.util.*
+import java.util.concurrent.atomic.AtomicInteger
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,10 +44,50 @@ class SettingFragment : Fragment() {
     var v: View? = null
     var txtFirstName: TextInputLayout? = null
     var txtLastName: TextInputLayout? = null
-    var togglePrivacy: ToggleButton? = null
+    var switchPrivacyStatus: SwitchCompat? = null
     var btnEdit: Button? = null
-
+    var circleImg: ShapeableImageView? = null
     lateinit var preferences: SharedPreferences
+
+    fun updatePrivacy(user_id: Int){
+
+        val sharedName = this.activity?.packageName
+        preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+        val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
+
+        val q = Volley.newRequestQueue(activity)
+        val url = "https://ubaya.fun/native/160420024/memes_api/set_privacystatus.php"
+
+        val stringRequest = object : StringRequest(
+            Request.Method.POST,
+            url, Response.Listener{
+                Log.d("Cek Parameter Settings", it.toString())
+                val obj = JSONObject(it)
+                val result = obj.getString("result")
+                if(result == "OK"){
+                    Log.d("Status", "Berhasil Update Status Private")
+                    val updatedStatus = obj.getInt("status")
+                }
+            }
+
+            ,
+            {
+                Response.ErrorListener{
+                    Log.d("Cek Parameter", it.message.toString())
+                }
+            }
+        )
+        {
+            override fun getParams(): MutableMap<String, String>? {
+                val map = HashMap<String, String>()
+                map.set("user_id", id_user.toString())
+                Log.d("MAP", map.toString())
+                return map
+            }
+
+        }
+        q.add(stringRequest)
+    }
 
 
 
@@ -79,12 +122,19 @@ class SettingFragment : Fragment() {
                     val private = userObj.getInt("private")
 
                     Picasso.get().load(avatarLink).into(circleImgBorder)
-//                    imageView2.setImageDrawable()
                     txtInputFirstName.editText?.setText(firstName)
                     txtInputLastName.editText?.setText(lastName)
+                    if(private == 0){
+                        Log.d("Privacy", "ON")
+                        switchPrivacyStatus?.isChecked = true
+                    }
+                    else{
+                        Log.d("Privacy", "OFF")
+                        switchPrivacyStatus?.isChecked = false
+                    }
                     Log.d("First Name", firstName)
-
-
+                    Log.d("Last Name", lastName)
+                    Log.d("id user", id_user.toString())
                 }
             }
 
@@ -116,26 +166,32 @@ class SettingFragment : Fragment() {
 
         txtFirstName = v?.findViewById(R.id.txtInputFirstName)
         txtLastName = v?.findViewById(R.id.txtInputLastName)
-        togglePrivacy = v?.findViewById(R.id.togglePrivacy)
+        switchPrivacyStatus = v?.findViewById(R.id.switchPrivacy)
         btnEdit = v?.findViewById(R.id.btnEditProfile)
+        circleImg = v?.findViewById(R.id.circleImgBorder)
 
         txtFirstName?.isEnabled = false
         txtLastName?.isEnabled = false
-        togglePrivacy?.isEnabled = false
-
-//        val sharedName = this.activity?.packageName
-//        preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
-//        val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
 
 
+        val sharedName = this.activity?.packageName
+        preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+        val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
 
-
-
-        btnEdit?.setOnClickListener{
-            Log.d("Btn Edit", "Clicked")
-//            Log.d("ID User", id_user.toString())
+        switchPrivacyStatus?.setOnClickListener{
+            if(switchPrivacyStatus?.isChecked == true){
+                Log.d("Switch", "ON->akun menjadi private")
+                updatePrivacy(id_user)
+            }
+            else{
+                Log.d("Switch", "OFF->akun menjadi public")
+                updatePrivacy(id_user)
+            }
         }
 
+        circleImg?.setOnClickListener{
+            Log.d("IMG", "Clicked")
+        }
 
         return v
     }
