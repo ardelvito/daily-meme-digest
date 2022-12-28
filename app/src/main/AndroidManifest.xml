@@ -16,6 +16,10 @@
         android:theme="@style/Theme.DailyMemeDigest"
         tools:targetApi="31">
         <activity
+            android:name=".EditFirstName"
+            android:exported="false"
+            />
+        <activity
             android:name=".memeDetails"
             android:exported="false">
             <meta-data

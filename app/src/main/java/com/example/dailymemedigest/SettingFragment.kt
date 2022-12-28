@@ -1,6 +1,7 @@
 package com.example.dailymemedigest
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ToggleButton
 import androidx.appcompat.widget.SwitchCompat
 import com.android.volley.Request
@@ -47,6 +49,10 @@ class SettingFragment : Fragment() {
     var switchPrivacyStatus: SwitchCompat? = null
     var btnEdit: Button? = null
     var circleImg: ShapeableImageView? = null
+    var editFirstName: ImageView? = null
+    var editLastName: ImageView? = null
+
+
     lateinit var preferences: SharedPreferences
 
     fun updatePrivacy(user_id: Int){
@@ -169,6 +175,8 @@ class SettingFragment : Fragment() {
         switchPrivacyStatus = v?.findViewById(R.id.switchPrivacy)
         btnEdit = v?.findViewById(R.id.btnEditProfile)
         circleImg = v?.findViewById(R.id.circleImgBorder)
+        editFirstName = v?.findViewById(R.id.imgEditFirstName)
+        editLastName = v?.findViewById(R.id.imgEditLastName)
 
         txtFirstName?.isEnabled = false
         txtLastName?.isEnabled = false
@@ -187,6 +195,18 @@ class SettingFragment : Fragment() {
                 Log.d("Switch", "OFF->akun menjadi public")
                 updatePrivacy(id_user)
             }
+        }
+
+        editFirstName?.setOnClickListener {
+            Log.d("First Name", "Edit")
+            val intent = Intent(activity, EditFirstName::class.java)
+            activity?.startActivity(intent)
+
+
+        }
+
+        editLastName?.setOnClickListener {
+            Log.d("Last Name", "Edit")
         }
 
         circleImg?.setOnClickListener{
