@@ -4,20 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditFirstName">
+    tools:context=".EditLastName">
 
-<!--    <androidx.appcompat.widget.Toolbar-->
-<!--        android:id="@+id/topAppBar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:menu="@menu/top_menu"-->
-<!--        >-->
-
-<!--    </androidx.appcompat.widget.Toolbar>-->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputLayoutLastName"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -53,6 +41,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtInputLayoutLastName" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

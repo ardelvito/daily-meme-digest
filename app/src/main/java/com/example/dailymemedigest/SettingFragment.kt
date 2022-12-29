@@ -39,6 +39,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [SettingFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
 class SettingFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -54,6 +55,59 @@ class SettingFragment : Fragment() {
 
 
     lateinit var preferences: SharedPreferences
+
+
+
+    fun refresh(user_id: Int){
+        val q = Volley.newRequestQueue(this.activity)
+        val url = "https://ubaya.fun/native/160420024/memes_api/get_userprofile.php"
+
+        val stringRequest = object : StringRequest(
+            Request.Method.POST,
+            url, Response.Listener{
+                Log.d("Cek Parameter Settings", it.toString())
+                val obj = JSONObject(it)
+                val result = obj.getString("result")
+                if(result == "OK"){
+                    Log.d("Status", "Berhasil Refresh")
+                    val arrData = obj.getJSONArray("data")
+                    val userObj = arrData.getJSONObject(0)
+
+                    val firstName = userObj.getString("first_name")
+                    val lastName = userObj.getString("last_name")
+                    val registDate = userObj.getString("regis_date")
+                    val avatarLink = userObj.getString("avatar_link")
+                    val private = userObj.getInt("private")
+                    val username = userObj.getString("username")
+                    val dateObj = arrData.getJSONObject(1)
+
+                    txtUserName.setText(username.toString())
+                    txtUserFullName.setText(firstName + " " + lastName)
+                    Picasso.get().load(avatarLink).into(circleImgBorder)
+                    txtInputFirstName.editText?.setText(firstName)
+                    txtInputLastName.editText?.setText(lastName)
+
+                }
+            }
+
+            ,
+            {
+                Response.ErrorListener{
+                    Log.d("Cek Parameter", it.message.toString())
+                }
+            }
+        )
+        {
+            override fun getParams(): MutableMap<String, String>? {
+                val map = HashMap<String, String>()
+                map.set("user_id", user_id.toString())
+                Log.d("MAP", map.toString())
+                return map
+            }
+
+        }
+        q.add(stringRequest)
+    }
 
     fun updatePrivacy(user_id: Int){
 
@@ -95,6 +149,13 @@ class SettingFragment : Fragment() {
         q.add(stringRequest)
     }
 
+    override fun onStart() {
+        super.onStart()
+        val sharedName = this.activity?.packageName
+        preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+        val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
+        refresh(id_user)
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -126,6 +187,16 @@ class SettingFragment : Fragment() {
                     val registDate = userObj.getString("regis_date")
                     val avatarLink = userObj.getString("avatar_link")
                     val private = userObj.getInt("private")
+                    val username = userObj.getString("username")
+                    val dateObj = arrData.getJSONObject(1)
+
+                    val month = dateObj.getString("month")
+                    val year = dateObj.getString("year")
+
+//                    Log.d("Date", month.toString() + year.toString())
+                    txtUserFullName.setText(firstName.toString() + " " + lastName.toString())
+                    txtActiveDate.setText("Active Since " + month.toString() + " " + year.toString())
+                    txtUserName.setText(username.toString())
 
                     Picasso.get().load(avatarLink).into(circleImgBorder)
                     txtInputFirstName.editText?.setText(firstName)
@@ -207,6 +278,8 @@ class SettingFragment : Fragment() {
 
         editLastName?.setOnClickListener {
             Log.d("Last Name", "Edit")
+            val intent = Intent(activity, EditLastName::class.java)
+            activity?.startActivity(intent)
         }
 
         circleImg?.setOnClickListener{

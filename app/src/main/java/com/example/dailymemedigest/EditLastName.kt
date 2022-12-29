@@ -19,7 +19,8 @@ import kotlinx.android.synthetic.main.activity_edit_first_name.*
 import org.json.JSONObject
 import java.util.HashMap
 
-class EditFirstName : AppCompatActivity() {
+class EditLastName : AppCompatActivity() {
+
     var v: View? = null
     var txtFirstName: TextInputLayout? = null
     var txtLastName: TextInputLayout? = null
@@ -32,14 +33,14 @@ class EditFirstName : AppCompatActivity() {
 
     lateinit var preferences: SharedPreferences
 
-    fun updateFirstName(user_id: Int, new_firstname: String){
+    fun updateLastName(user_id: Int, new_firstname: String){
 
         val sharedName = this.packageName
         preferences = this.getSharedPreferences(sharedName, Context.MODE_PRIVATE)
         val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
 
         val q = Volley.newRequestQueue(this)
-        val url = "https://ubaya.fun/native/160420024/memes_api/update_firstname.php"
+        val url = "https://ubaya.fun/native/160420024/memes_api/update_lastname.php"
 
         val stringRequest = object : StringRequest(
             Request.Method.POST,
@@ -48,7 +49,7 @@ class EditFirstName : AppCompatActivity() {
                 val obj = JSONObject(it)
                 val result = obj.getString("result")
                 if(result == "OK"){
-                    Log.d("Status", "Berhasil First Name")
+                    Log.d("Status", "Berhasil Last Name")
                 }
             }
 
@@ -63,7 +64,7 @@ class EditFirstName : AppCompatActivity() {
             override fun getParams(): MutableMap<String, String>? {
                 val map = HashMap<String, String>()
                 map.set("user_id", id_user.toString())
-                map.set("new_firstname", new_firstname)
+                map.set("new_lastname", new_firstname)
                 Log.d("MAP", map.toString())
                 return map
             }
@@ -72,18 +73,11 @@ class EditFirstName : AppCompatActivity() {
         q.add(stringRequest)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_first_name)
+        setContentView(R.layout.activity_edit_last_name)
 
-//        var toolbar: androidx.appcompat.widget.Toolbar? = null
-//        toolbar = findViewById(R.id.topAppBar)
-//        setSupportActionBar(toolbar)
-//        getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.ic_edit);// set drawable icon
-//        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
-
-        Log.d("Edit First Name", "Edited")
+        Log.d("Edit Last Name", "Edited")
         val sharedName = this.packageName
         preferences = this.getSharedPreferences(sharedName, Context.MODE_PRIVATE)
         val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
@@ -102,11 +96,11 @@ class EditFirstName : AppCompatActivity() {
                     val arrData = obj.getJSONArray("data")
                     val userObj = arrData.getJSONObject(0)
 
-                    val firstName = userObj.getString("first_name")
+                    val lastName = userObj.getString("last_name")
 
-                    txtInputLayoutLastName.editText?.setText(firstName)
+                    txtInputLayoutLastName.editText?.setText(lastName)
 
-                    Log.d("First Name Edit", firstName)
+                    Log.d("Last Name Edit", lastName)
 
                 }
             }
@@ -131,11 +125,7 @@ class EditFirstName : AppCompatActivity() {
 
         btnEditLastName.setOnClickListener{
             Log.d("Btn Edit", txtInputEditLastName.text.toString())
-            updateFirstName(id_user, txtInputEditLastName.text.toString())
-
+            updateLastName(id_user, txtInputEditLastName.text.toString())
         }
-
     }
-
-
 }
