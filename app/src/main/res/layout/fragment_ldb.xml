@@ -26,8 +26,8 @@
                 android:text="First"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/cardView2"
-                app:layout_constraintTop_toTopOf="@+id/cardView2" />
+                app:layout_constraintStart_toEndOf="@+id/cardViewLDB"
+                app:layout_constraintTop_toTopOf="@+id/cardViewLDB" />
 
             <TextView
                 android:id="@+id/txtLNameLDB"
@@ -40,7 +40,7 @@
                 android:textColor="#000000"
                 android:textSize="16sp"
                 app:layout_constraintStart_toEndOf="@+id/txtFNameLDB"
-                app:layout_constraintTop_toTopOf="@+id/cardView2" />
+                app:layout_constraintTop_toTopOf="@+id/cardViewLDB" />
 
             <TextView
                 android:id="@+id/txtNL"
@@ -52,11 +52,11 @@
                 android:text="Like"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
-                app:layout_constraintTop_toTopOf="@+id/cardView2" />
+                app:layout_constraintStart_toEndOf="@+id/imgViewLDB1"
+                app:layout_constraintTop_toTopOf="@+id/cardViewLDB" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView2"
+                android:id="@+id/cardViewLDB"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="8dp"
@@ -73,13 +73,13 @@
             </androidx.cardview.widget.CardView>
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/imgViewLDB1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="265dp"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/cardView2"
+                app:layout_constraintTop_toTopOf="@+id/cardViewLDB"
                 app:srcCompat="@drawable/ic_baseline_thumb_up_alt_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
