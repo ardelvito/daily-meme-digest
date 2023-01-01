@@ -18,14 +18,13 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/editPhotoProfile"
+                android:id="@+id/circleImgBorder"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/default_profile"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.502"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearanceOverlay="@style/circular"
@@ -42,7 +41,7 @@
                 android:textSize="22dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editPhotoProfile" />
+                app:layout_constraintTop_toBottomOf="@+id/circleImgBorder" />
 
             <TextView
                 android:id="@+id/txtActiveDate"
