@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/menuTop">
+        <item
+            android:id="@+id/itemAddNewMemes"
+            android:icon="@drawable/ic_add"
+            android:title="Create Memes" />
+        <item
+            android:id="@+id/itemHome"
+            android:checkable="true"
+            android:checked="true"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/itemMyCreation"
+            android:icon="@drawable/ic_creation"
+            android:title="My Creation" />
+        <item
+            android:id="@+id/itemLeaderboard"
+            android:icon="@drawable/ic_barchart"
+            android:title="Leaderboard" />
+    </group>
+    <group android:id="@+id/menuBottom" >
+        <item
+            android:id="@+id/itemSetting"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings" />
+    </group>
+</menu>

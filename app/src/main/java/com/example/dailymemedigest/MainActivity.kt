@@ -6,6 +6,9 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -13,6 +16,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
+import kotlinx.android.synthetic.main.drawer_layout.*
 import kotlinx.android.synthetic.main.login_page.*
 
 class MainActivity : AppCompatActivity() {
@@ -39,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setContentView(R.layout.drawer_layout)
 
 //        changeFragment()
 
@@ -58,9 +63,27 @@ class MainActivity : AppCompatActivity() {
             Log.d("FAB", "CLICKED")
         }
 
+        // Navigation Bar
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        var drawerToggle =
+            ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.app_name,
+                R.string.app_name)
+        drawerToggle.isDrawerIndicatorEnabled = true
+        drawerToggle.syncState()
+
+        navViewD.setNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.itemAddNewMemes -> Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show()
+                R.id.itemHome -> Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                R.id.itemMyCreation -> Toast.makeText(this, "MyCreation", Toast.LENGTH_SHORT).show()
+                R.id.itemLeaderboard -> Toast.makeText(this, "LDB", Toast.LENGTH_SHORT).show()
+                R.id.itemSetting -> Toast.makeText(this, "Setting", Toast.LENGTH_SHORT).show()
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
     }
-
-
 
     private fun chooseFragment(){
         fragmentList.add(HomeFragment())

@@ -80,7 +80,7 @@
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/cardViewLDB"
-                app:srcCompat="@drawable/ic_baseline_thumb_up_alt_24" />
+                app:srcCompat="@drawable/ic_baseline_thumb_up_24" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
