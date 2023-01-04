@@ -11,7 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.ToggleButton
 import androidx.appcompat.widget.SwitchCompat
 import com.android.volley.Request
 import com.android.volley.Response
@@ -20,14 +19,9 @@ import com.android.volley.toolbox.Volley
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_setting.*
-import kotlinx.android.synthetic.main.fragment_setting.view.*
-import kotlinx.android.synthetic.main.login_page.view.*
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.memes_card.view.*
 import org.json.JSONObject
-import java.net.URL
 import java.util.*
-import java.util.concurrent.atomic.AtomicInteger
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -246,7 +240,7 @@ class SettingFragment : Fragment() {
         switchPrivacyStatus = v?.findViewById(R.id.switchPrivacy)
         btnEdit = v?.findViewById(R.id.btnEditProfile)
         circleImg = v?.findViewById(R.id.circleImgBorder)
-        editFirstName = v?.findViewById(R.id.imgEditFirstName)
+        editFirstName = v?.findViewById(R.id.editColorText)
         editLastName = v?.findViewById(R.id.imgEditLastName)
 
         txtFirstName?.isEnabled = false

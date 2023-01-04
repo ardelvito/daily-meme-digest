@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity() {
 
         fab_meme.setOnClickListener(){
             Log.d("FAB", "CLICKED")
+            val intent = Intent(this, AddNewMeme::class.java)
+            this.startActivity(intent)
         }
 
         // Navigation Bar

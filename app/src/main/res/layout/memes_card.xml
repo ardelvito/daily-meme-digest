@@ -26,7 +26,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imgMemes"
+                android:id="@+id/newImgMemes"
                 android:layout_width="match_parent"
                 android:layout_height="256dp"
                 android:scaleType="centerCrop"
@@ -50,7 +50,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.122"
                 app:layout_constraintStart_toEndOf="@+id/btnLikes"
-                app:layout_constraintTop_toBottomOf="@+id/imgMemes" />
+                app:layout_constraintTop_toBottomOf="@+id/newImgMemes" />
 
             <Button
                 android:id="@+id/btnComment"
@@ -64,7 +64,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.448"
                 app:layout_constraintStart_toEndOf="@+id/btnMore"
-                app:layout_constraintTop_toBottomOf="@+id/imgMemes" />
+                app:layout_constraintTop_toBottomOf="@+id/newImgMemes" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLikes"
@@ -81,12 +81,12 @@
                 app:iconTint="#FF0000"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imgMemes"
+                app:layout_constraintTop_toBottomOf="@+id/newImgMemes"
                 app:layout_constraintVertical_bias="0.0"
                 app:toggleCheckedStateOnClick="false" />
 
             <TextView
-                android:id="@+id/memesTopText"
+                android:id="@+id/newMemeTopText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -96,10 +96,10 @@
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgMemes" />
+                app:layout_constraintTop_toTopOf="@+id/newImgMemes" />
 
             <TextView
-                android:id="@+id/memesBotText"
+                android:id="@+id/newMemeBotText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="200dp"
@@ -109,7 +109,7 @@
                 android:textSize="34sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgMemes" />
+                app:layout_constraintTop_toTopOf="@+id/newImgMemes" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

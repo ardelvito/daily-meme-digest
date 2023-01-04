@@ -147,7 +147,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/switchPrivacy" />
 
             <ImageView
-                android:id="@+id/imgEditFirstName"
+                android:id="@+id/editColorText"
                 android:layout_width="42dp"
                 android:layout_height="43dp"
                 android:layout_marginStart="8dp"
