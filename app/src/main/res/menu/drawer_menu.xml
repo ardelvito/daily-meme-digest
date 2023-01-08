@@ -3,10 +3,6 @@
 
     <group android:id="@+id/menuTop">
         <item
-            android:id="@+id/itemAddNewMemes"
-            android:icon="@drawable/ic_add"
-            android:title="Create Memes" />
-        <item
             android:id="@+id/itemHome"
             android:checkable="true"
             android:checked="true"
