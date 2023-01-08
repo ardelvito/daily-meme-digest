@@ -1,6 +1,7 @@
 package com.example.dailymemedigest
 
 import android.content.Intent
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -34,9 +35,19 @@ class HomeAdapter(private val memes:ArrayList<Meme>, private val user_id:Int)
         with(holder.v){
             //region card data
             val url = memes[posisi].url
+            val top_text_color = memes[position].top_text_color
+            val bot_text_color = memes[position].bot_text_color
             Picasso.get().load(url).into(newImgMemes)
             newMemeTopText.setText(memes[posisi].top_text)
             newMemeBotText.setText(memes[position].bot_text)
+            if(top_text_color.contains("#") && bot_text_color.contains("#")){
+                newMemeBotText.setTextColor(Color.parseColor(bot_text_color))
+                newMemeTopText.setTextColor(Color.parseColor(top_text_color))
+            }
+            else{
+                newMemeBotText.setTextColor(ContextCompat.getColor(context, R.color.white))
+                newMemeTopText.setTextColor(ContextCompat.getColor(context, R.color.white))
+            }
             btnLikes.text = memes[posisi].total_likes.toString() + "Likes"
             btnComment.text = memes[posisi].total_komen.toString() + "Comment"
             txtCreatedUsername.text = memes[posisi].username

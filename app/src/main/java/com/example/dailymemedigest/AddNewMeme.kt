@@ -24,7 +24,7 @@ class AddNewMeme : AppCompatActivity() {
         var sharedName = packageName
         var shared = getSharedPreferences(sharedName, Context.MODE_PRIVATE)
         var id_shared = shared.getInt(Login.SHARED_PLAYER_ID, 0)
-        var color = ""
+        var color = "white"
         btnAddNewMeme.setOnClickListener{
             val url:String = txtInputEditUrlMeme.text.toString()
             val topText:String =txtInputEditTopText.text.toString()
