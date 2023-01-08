@@ -72,6 +72,7 @@ class LeaderboardFragment : Fragment() {
                             playObj.getString("first_name"),
                             playObj.getString("last_name"),
                             playObj.getString("image_url"),
+                            playObj.getInt("private"),
                             playObj.getInt("num_likes")
                         )
                         leaderboard.add(playlist)
