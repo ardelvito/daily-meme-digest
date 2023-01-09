@@ -9,26 +9,25 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.squareup.picasso.Picasso
-import com.android.volley.Request
 import kotlinx.android.synthetic.main.memes_card.view.*
 import org.json.JSONObject
 
-class HomeAdapter(private val memes:ArrayList<Meme>, private val user_id:Int)
-    :RecyclerView.Adapter<HomeAdapter.HomeViewHolder>() {
-    class HomeViewHolder(val v: View)
-        :RecyclerView.ViewHolder(v)
+class CreationAdapter(private val memes:ArrayList<Meme>, private val user_id:Int)
+    :RecyclerView.Adapter<CreationAdapter.CreationViewHolder>() {
+    class CreationViewHolder(val v: View): RecyclerView.ViewHolder(v)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CreationViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val v = inflater.inflate(R.layout.memes_card, parent, false)
-        Log.d("on create view holder", "success")
-        return HomeViewHolder(v)
+        Log.d("creation viewholder", "success")
+        return CreationViewHolder(v)
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CreationViewHolder, position: Int) {
         val posisi = position
 
         with(holder.v){
@@ -109,39 +108,7 @@ class HomeAdapter(private val memes:ArrayList<Meme>, private val user_id:Int)
 
             //region btn likes
             btnLikes.setOnClickListener{
-                val q = Volley.newRequestQueue(this.context)
-                val urlVol = "https://ubaya.fun/native/160420024/memes_api/set_likes.php"
-                val stringRequest = object : StringRequest(
-                    Request.Method.POST,
-                    urlVol, {
-                        val obj = JSONObject(it)
-                        Log.d("cekparamsSetLikes", it)
-                        if(obj.getString("result") == "OK"){
-                            val statLike = obj.getInt("status")
-                            if(statLike == 1){
-                                memes[posisi].total_likes += 1
-                                btnLikes.icon = ContextCompat.getDrawable(this.context, R.drawable.ic_baseline_thumb_up_alt_24)
-                            }
-                            else{
-                                memes[posisi].total_likes -= 1
-                                btnLikes.icon = ContextCompat.getDrawable(this.context, R.drawable.ic_baseline_thumb_up_off_alt_24)
-                            }
-                            btnLikes.text = memes[posisi].total_likes.toString() + "Likes"
-                            Toast.makeText(this.context, "Berhasil melakukan likes!", Toast.LENGTH_SHORT).show()
-                        }
-                    }, {
-                        Log.e("apiresult", it.message.toString())
-                    }
-                )
-                {
-                    override fun getParams(): MutableMap<String, String>? {
-                        val map = HashMap<String, String>()
-                        map.set("id_memes", memes[posisi].id.toString())
-                        map.set("id_user", user_id.toString())
-                        return map
-                    }
-                }
-                q.add(stringRequest)
+                Toast.makeText(this.context, "Stop being narcistic by liking your own content bruh", Toast.LENGTH_SHORT).show()
             }
             //endregion
 
