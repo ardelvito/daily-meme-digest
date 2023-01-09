@@ -4,8 +4,8 @@
     <group android:id="@+id/menuTop">
         <item
             android:id="@+id/itemHome"
-            android:checkable="true"
-            android:checked="true"
+            android:checkable="false"
+            android:checked="false"
             android:icon="@drawable/ic_home"
             android:title="Home" />
         <item

@@ -42,6 +42,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        memesList.clear()
 
         val q = Volley.newRequestQueue(activity)
         val url = "https://ubaya.fun/native/160420024/memes_api/get_memes.php"
