@@ -48,12 +48,27 @@ class CreationAdapter(private val memes:ArrayList<Meme>, private val user_id:Int
             }
             btnLikes.text = memes[posisi].total_likes.toString() + "Likes"
             btnComment.text = memes[posisi].total_komen.toString() + "Comment"
-            txtCreatedUsername.text = memes[posisi].username
+            if(memes[posisi].private == 0){
+                val username = memes[posisi].username.toString()
+                var tampungU = ArrayList<String>()
+                var gantiU = ""
+                var tampungUN = ""
+                for (i in 3..username.length){
+                    tampungUN = username.substring(3,username.length)
+                    tampungU += "*"
+                }
+                for (i in 0..tampungUN.length-1){
+                    gantiU += tampungU[i]
+                }
+                txtCreatedUsername.text = username.replace("$tampungUN", "$gantiU")
+            } else if (memes[posisi].private == 1) {
+                txtCreatedUsername.text = memes[posisi].username
+            }
             var temp = memes[posisi].created_at.toString() + " ("
             if(memes[posisi].day > 0){
                 temp += memes[posisi].day.toString() + "days and "
             }
-            temp += memes[posisi].hours.toString() + "hours ago"
+            temp += memes[posisi].hours.toString() + "hours ago)"
             //endregion
 
             //region expandable

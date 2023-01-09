@@ -70,6 +70,7 @@ class HomeFragment : Fragment() {
                             memeObj.getInt("total_komen"),
                             false,
                             memeObj.getString("username"),
+                            memeObj.getInt("private"),
                             memeObj.getInt("day_differ"),
                             memeObj.getInt("hours_differ")
                         )

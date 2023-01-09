@@ -14,6 +14,7 @@ data class Meme(var id: Int,
                 var total_komen: Int,
                 var expandable: Boolean = false,
                 var username: String,
+                var private: Int,
                 var day: Int,
                 var hours: Int
 )
