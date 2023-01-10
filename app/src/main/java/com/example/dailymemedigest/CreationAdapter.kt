@@ -129,7 +129,7 @@ class CreationAdapter(private val memes:ArrayList<Meme>, private val user_id:Int
 
             //region btn comment
             btnComment.setOnClickListener{
-                val intent = Intent(this.context, memeDetails::class.java)
+                val intent = Intent(this.context, MemeDetails::class.java)
                 this.context.startActivity(intent)
             }
 

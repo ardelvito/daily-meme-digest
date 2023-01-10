@@ -53,7 +53,6 @@ class Login : AppCompatActivity() {
                 Request.Method.POST,
                 url, Response.Listener {
                     Log.d("cekparams", it)
-                    Log.d("IT", it.toString())
                     val obj = JSONObject(it)
                     val result = obj.getString("result")
                     val message = obj.getString("message")

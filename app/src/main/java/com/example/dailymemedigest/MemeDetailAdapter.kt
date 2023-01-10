@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.comment_card.view.*
 
-class MemeDetailAdapter(val context: Context): RecyclerView.Adapter<MemeDetailAdapter.MemeDetailViewHolder>() {
+class MemeDetailAdapter(val context: Context, private val comments:ArrayList<Comment>): RecyclerView.Adapter<MemeDetailAdapter.MemeDetailViewHolder>() {
     class MemeDetailViewHolder(val view: View):RecyclerView.ViewHolder(view)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MemeDetailViewHolder {
@@ -20,13 +20,13 @@ class MemeDetailAdapter(val context: Context): RecyclerView.Adapter<MemeDetailAd
 
     override fun onBindViewHolder(holder: MemeDetailViewHolder, position: Int) {
         //bind data ke comment meme card
-        val comment = Global.comment[position]
+        val comment = comments[position]
         with(holder.view){
-            txtUsernameComment.text = comment.firstName
+            txtUsernameComment.text = comment.fullName
             txtContentComment.text = comment.commentContent
             txtDateComment.text = comment.date
         }
     }
 
-    override fun getItemCount()= Global.comment.size
+    override fun getItemCount()= comments.size
 }

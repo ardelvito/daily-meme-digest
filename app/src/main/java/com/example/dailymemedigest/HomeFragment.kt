@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
     var user_id: Int = 0
 
     fun updateList(){
-        val sharedName = this.activity?.packageName
+        val sharedName = "com.example.dailymemedigest"
         preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
         val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
         user_id = id_user
@@ -94,8 +94,6 @@ class HomeFragment : Fragment() {
     }
 
     companion object {
-
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             HomeFragment().apply {

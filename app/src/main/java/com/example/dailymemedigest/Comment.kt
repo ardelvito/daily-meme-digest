@@ -1,7 +1,6 @@
 package com.example.dailymemedigest
 
-data class Comment(val firstName:String,
-                   val lastName:String,
+data class Comment(val fullName: String,
                    val date:String,
                    val commentContent:String
                    )

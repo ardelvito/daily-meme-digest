@@ -28,7 +28,7 @@
             android:name=".EditFirstName"
             android:exported="false" />
         <activity
-            android:name=".memeDetails"
+            android:name=".MemeDetails"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

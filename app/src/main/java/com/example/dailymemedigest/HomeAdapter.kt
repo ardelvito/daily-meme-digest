@@ -162,8 +162,10 @@ class HomeAdapter(private val memes:ArrayList<Meme>, private val user_id:Int)
 
             //region btn comment
             btnComment.setOnClickListener{
-                val intent = Intent(this.context, memeDetails::class.java)
-                this.context.startActivity(intent)
+                Intent(this.context, MemeDetails::class.java).also {
+                    it.putExtra("EXTRA_MEME", memes[posisi])
+                    this.context.startActivity(it)
+                }
             }
 
             //endregion

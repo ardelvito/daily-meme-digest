@@ -17,4 +17,4 @@ data class Meme(var id: Int,
                 var private: Int,
                 var day: Int,
                 var hours: Int
-)
+) : java.io.Serializable
