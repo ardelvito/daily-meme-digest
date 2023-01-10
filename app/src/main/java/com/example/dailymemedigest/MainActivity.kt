@@ -85,7 +85,8 @@ class MainActivity : AppCompatActivity() {
         var preferences: SharedPreferences = getSharedPreferences(sharedName, Context.MODE_PRIVATE)
         var editor: SharedPreferences.Editor = preferences.edit()
         val idUser = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
-        getDataDrawer(idUser)
+        val bgDH = "https://ubaya.fun/native/160420024/bg/bg.jpg"
+        getDataDrawer(idUser, bgDH)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(false)
         var drawerToggle =
@@ -124,7 +125,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun getDataDrawer(user_id: Int) {
+    fun getDataDrawer(user_id: Int, bgDH: String) {
         val q = Volley.newRequestQueue(this)
         val url = "https://ubaya.fun/native/160420024/memes_api/get_userprofile.php"
 
@@ -148,8 +149,6 @@ class MainActivity : AppCompatActivity() {
                     navViewD.txtFNameDH.setText(firstName.toString())
                     navViewD.txtLNameDH.setText(lastName.toString())
                     Picasso.get().load(avatarLink).into(navViewD.imgProfileDH)
-
-                    val bgDH = "https://ubaya.fun/native/160420024/bg/bg.jpg"
 
                     Glide.with(this).load(bgDH)
                         .apply(RequestOptions.bitmapTransform(BlurTransformation(50, 1)))
