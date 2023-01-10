@@ -44,4 +44,6 @@ dependencies {
     implementation 'com.android.volley:volley:1.2.1'
     implementation 'com.squareup.picasso:picasso:2.8'
     implementation 'com.github.novatien:SmartColorPicker:1.0.2'
+    implementation 'com.karumi:dexter:6.2.3'
+
 }

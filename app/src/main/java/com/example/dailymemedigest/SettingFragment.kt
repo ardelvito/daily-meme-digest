@@ -278,6 +278,8 @@ class SettingFragment : Fragment() {
 
         circleImg?.setOnClickListener{
             Log.d("IMG", "Clicked")
+            val intent = Intent(activity,  EditPhotoProfile::class.java)
+            activity?.startActivity(intent)
         }
 
         return v

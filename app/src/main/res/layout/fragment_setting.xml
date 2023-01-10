@@ -21,7 +21,6 @@
                 android:id="@+id/circleImgBorder"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginStart="32dp"
                 android:layout_marginTop="16dp"
                 android:src="@drawable/default_profile"
                 app:layout_constraintEnd_toEndOf="parent"
