@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         // Navigation Bar
         var sharedName = "com.example.dailymemedigest"
         var preferences: SharedPreferences = getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+        var editor: SharedPreferences.Editor = preferences.edit()
         val idUser = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
         getDataDrawer(idUser)
 
@@ -112,6 +113,9 @@ class MainActivity : AppCompatActivity() {
         val DH:View = navViewDH.getHeaderView(0)
         val logoutBtn:View = DH.findViewById(R.id.btnLogoutDH)
         logoutBtn.setOnClickListener {
+            editor.clear()
+            editor.apply()
+
             //create intent object & determine the activity target
             val intent = Intent(this, Login::class.java)
 
