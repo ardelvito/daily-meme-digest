@@ -29,16 +29,16 @@
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/drawable/ic_settings.xml" value="0.1" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/drawable/thumb_toggle.xml" value="0.1795" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/drawable/track_toggle.xml" value="0.1795" />
-        <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_add_new_meme.xml" value="0.176" />
+        <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_add_new_meme.xml" value="0.12222222222222222" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_coba.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_detail_meme.xml" value="0.2246376811594203" />
+        <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_detail_meme.xml" value="0.2" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_edit_first_name.xml" value="0.2" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_edit_last_name.xml" value="0.13385416666666666" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_edit_photo_profile.xml" value="0.2246376811594203" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_main.xml" value="0.10404624277456648" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_meme_details.xml" value="0.15" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/activity_registration.xml" value="0.20398009950248755" />
-        <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/comment_card.xml" value="0.128" />
+        <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/comment_card.xml" value="0.264" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/drawer_header.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/drawer_layout.xml" value="0.12760416666666666" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/fragment_creation.xml" value="0.2" />
@@ -49,7 +49,7 @@
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/fragment_setting.xml" value="0.12" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/login_page.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/main_activity.xml" value="0.24895833333333334" />
-        <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/memes_card.xml" value="0.1" />
+        <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/memes_card.xml" value="0.2" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/regis_acc_page.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/layout/topappbar.xml" value="0.1" />
         <entry key="..\:/Users/ardel/OneDrive/Documents/GitHub/daily-meme-digest/app/src/main/res/menu/bottom_menu.xml" value="0.136" />
