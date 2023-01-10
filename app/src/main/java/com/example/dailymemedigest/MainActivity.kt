@@ -19,9 +19,12 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.squareup.picasso.Picasso
+import jp.wasabeef.glide.transformations.BlurTransformation
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.drawer_header.view.*
@@ -141,6 +144,12 @@ class MainActivity : AppCompatActivity() {
                     navViewD.txtFNameDH.setText(firstName.toString())
                     navViewD.txtLNameDH.setText(lastName.toString())
                     Picasso.get().load(avatarLink).into(navViewD.imgProfileDH)
+
+                    val bgDH = "https://ubaya.fun/native/160420024/bg/bg.jpg"
+
+                    Glide.with(this).load(bgDH)
+                        .apply(RequestOptions.bitmapTransform(BlurTransformation(50, 1)))
+                        .into(navViewD.imgBackgroundDH)
 
 //                    txtUserName.setText(username.toString())
 //                    txtUserFullName.setText(firstName + " " + lastName)
