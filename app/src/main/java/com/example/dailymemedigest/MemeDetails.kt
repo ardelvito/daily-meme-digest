@@ -22,8 +22,12 @@ class MemeDetails : AppCompatActivity() {
     var commentList: ArrayList<Comment> = ArrayList()
 
     fun updateList(){
+        var sharedName = packageName
+        var shared = getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+        var user_id = shared.getInt(Login.SHARED_PLAYER_ID, 0)
+
         val linearLayoutManager = LinearLayoutManager(this)
-        val a = MemeDetailAdapter(this, commentList)
+        val a = MemeDetailAdapter(this, commentList, user_id)
         with(recyclerViewCommentMeme){
             layoutManager = linearLayoutManager
             setHasFixedSize(true)
@@ -111,6 +115,7 @@ class MemeDetails : AppCompatActivity() {
 
                         val commentObj = data.getJSONObject(i)
                         val comment = Comment(
+                            commentObj.getInt("id"),
                             commentObj.getString("username"),
                             commentObj.getString("date"),
                             commentObj.getString("content")
@@ -154,6 +159,7 @@ class MemeDetails : AppCompatActivity() {
 
                                 val commentObj = data.getJSONObject(i)
                                 val comment = Comment(
+                                    commentObj.getInt("id"),
                                     commentObj.getString("username"),
                                     commentObj.getString("date"),
                                     commentObj.getString("content")

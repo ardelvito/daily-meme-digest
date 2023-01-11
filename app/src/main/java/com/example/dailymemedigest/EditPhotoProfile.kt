@@ -107,21 +107,21 @@ class EditPhotoProfile : AppCompatActivity() {
         q.add(stringRequest)
 
 
-        btnPickCamera.setOnClickListener{
-            Log.d("Pick", "Camera")
-            if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)!=
-                PackageManager.PERMISSION_GRANTED){
-                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA),
-                    REQUEST_IMAGE_CAPTURE)
-                Log.d("Permission", "Not Granted")
-
-            }
-            else{
-                takePicture()
-                Log.d("Permission", "Granted")
-
-            }
-        }
+//        btnPickCamera.setOnClickListener{
+//            Log.d("Pick", "Camera")
+//            if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)!=
+//                PackageManager.PERMISSION_GRANTED){
+//                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA),
+//                    REQUEST_IMAGE_CAPTURE)
+//                Log.d("Permission", "Not Granted")
+//
+//            }
+//            else{
+//                takePicture()
+//                Log.d("Permission", "Granted")
+//
+//            }
+//        }
 
         btnOpenGallery.setOnClickListener{
             Dexter.withActivity(this)
