@@ -88,26 +88,26 @@ class MainActivity : AppCompatActivity() {
         val bgDH = "https://ubaya.fun/native/160420024/bg/bg.jpg"
         getDataDrawer(idUser, bgDH)
 
-        supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        var drawerToggle =
-            ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.app_name,
-                R.string.app_name)
-        drawerToggle.isDrawerIndicatorEnabled = true
-        drawerToggle.syncState()
+//        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+//        var drawerToggle =
+//            ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.app_name,
+//                R.string.app_name)
+//        drawerToggle.isDrawerIndicatorEnabled = true
+//        drawerToggle.syncState()
 
-        navViewD.setNavigationItemSelectedListener {
-            chooseFragment()
-            viewPager.currentItem = when(it.itemId) {
-//                R.id.itemAddNewMemes -> 0
-                R.id.itemHome -> 0
-                R.id.itemMyCreation -> 1
-                R.id.itemLeaderboard -> 2
-                R.id.itemSetting -> 3
-                else -> 0
-            }
-            drawerLayout.closeDrawer(GravityCompat.START)
-            true
-        }
+//        navViewD.setNavigationItemSelectedListener {
+//            chooseFragment()
+//            viewPager.currentItem = when(it.itemId) {
+////                R.id.itemAddNewMemes -> 0
+//                R.id.itemHome -> 0
+//                R.id.itemMyCreation -> 1
+//                R.id.itemLeaderboard -> 2
+//                R.id.itemSetting -> 3
+//                else -> 0
+//            }
+//            drawerLayout.closeDrawer(GravityCompat.START)
+//            true
+//        }
 
         // Logout
         val navViewDH = findViewById<NavigationView>(R.id.navViewD)
@@ -195,27 +195,41 @@ class MainActivity : AppCompatActivity() {
             if(it.itemId == R.id.navi_home){
                 viewPager.currentItem = 0
                 Log.d("Fragment", "Home")
-
             }
             else if (it.itemId == R.id.navi_creation){
                 viewPager.currentItem = 1
                 Log.d("Fragment", "Creation")
-
             }
             else if (it.itemId == R.id.navi_leaderboard){
                 viewPager.currentItem = 2
                 Log.d("Fragment", "Leaderboard")
-
-
             }
             else if (it.itemId == R.id.navi_settings){
                 viewPager.currentItem = 3
                 Log.d("Fragment", "Settings")
-                
             }
-
             true
 
+        }
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        var drawerToggle =
+            ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.app_name,
+                R.string.app_name)
+        drawerToggle.isDrawerIndicatorEnabled = true
+        drawerToggle.syncState()
+
+        navViewD.setNavigationItemSelectedListener {
+            viewPager.currentItem = when(it.itemId) {
+//                R.id.itemAddNewMemes -> 0
+                R.id.itemHome -> 0
+                R.id.itemMyCreation -> 1
+                R.id.itemLeaderboard -> 2
+                R.id.itemSetting -> 3
+                else -> 0
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
         }
 
     }

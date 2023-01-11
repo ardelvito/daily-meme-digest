@@ -27,17 +27,10 @@ class LeaderboardAdapter(val ldbs:ArrayList<Leaderboard>): RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: LeaderboardViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val leaderboard = ldbs[position]
-//        var numlikes = leaderboard.num_likes
-//        if(numlikes == null){
-//            numlikes = 0
-//        } else {
-//            numlikes = numlikes
-//        }
+
         with(holder.v) {
             val url = leaderboard.image_url
             Picasso.get().load(url).into(imgProfileLDB)
-//            txtFNameLDB.text = leaderboard.first
-//            txtLNameLDB.text = leaderboard.last
             txtNL.text = "${leaderboard.num_likes} LIKES"
             if(leaderboard.private == 0){
                 val first = leaderboard.first.toString()

@@ -36,8 +36,8 @@ private const val ARG_PARAM2 = "param2"
 
 class SettingFragment : Fragment() {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+//    private var param1: String? = null
+//    private var param2: String? = null
     var v: View? = null
     var txtFirstName: TextInputLayout? = null
     var txtLastName: TextInputLayout? = null
@@ -154,10 +154,10 @@ class SettingFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+//        arguments?.let {
+//            param1 = it.getString(ARG_PARAM1)
+//            param2 = it.getString(ARG_PARAM2)
+//        }
         val sharedName = this.activity?.packageName
         preferences = this.requireActivity().getSharedPreferences(sharedName, Context.MODE_PRIVATE)
         val id_user = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
@@ -299,8 +299,8 @@ class SettingFragment : Fragment() {
         fun newInstance(param1: String, param2: String) =
             SettingFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+//                    putString(ARG_PARAM1, param1)
+//                    putString(ARG_PARAM2, param2)
                 }
             }
     }
