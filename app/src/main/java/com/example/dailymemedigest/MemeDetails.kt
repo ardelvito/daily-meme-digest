@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -135,44 +136,49 @@ class MemeDetails : AppCompatActivity() {
         //region button add comment
 
         textInputLayoutComment.setEndIconOnClickListener {
-            val content = textInputEditComment.text.toString()
-            val queAddComment = Volley.newRequestQueue(this.applicationContext)
-            val urlAddComment = "https://ubaya.fun/native/160420024/memes_api/add_comments.php"
-            var stringRequestAddComment = object:StringRequest(
-                Request.Method.POST,
-                urlAddComment, Response.Listener {
-                    Log.d("Add comments", it)
-                    val obj = JSONObject(it)
-                    val result = obj.getString("result")
-                    val message = obj.getString("message")
-                    if(result == "OK"){
-                        val data = obj.getJSONArray("data")
-                        for (i in 0 until data.length()){
-                            Log.d("apiresultDetails", it)
+            if(textInputEditComment.text.toString() != ""){
+                val content = textInputEditComment.text.toString()
+                val queAddComment = Volley.newRequestQueue(this.applicationContext)
+                val urlAddComment = "https://ubaya.fun/native/160420024/memes_api/add_comments.php"
+                var stringRequestAddComment = object:StringRequest(
+                    Request.Method.POST,
+                    urlAddComment, Response.Listener {
+                        Log.d("Add comments", it)
+                        val obj = JSONObject(it)
+                        val result = obj.getString("result")
+                        val message = obj.getString("message")
+                        if(result == "OK"){
+                            val data = obj.getJSONArray("data")
+                            for (i in 0 until data.length()){
+                                Log.d("apiresultDetails", it)
 
-                            val commentObj = data.getJSONObject(i)
-                            val comment = Comment(
-                                commentObj.getString("username"),
-                                commentObj.getString("date"),
-                                commentObj.getString("content")
-                            )
-                            commentList.add(comment)
+                                val commentObj = data.getJSONObject(i)
+                                val comment = Comment(
+                                    commentObj.getString("username"),
+                                    commentObj.getString("date"),
+                                    commentObj.getString("content")
+                                )
+                                commentList.add(comment)
+                            }
+                            updateList()
                         }
-                        updateList()
+                    }, {
+                        Log.e("Add comments", it.message.toString())
+                    })
+                {
+                    override fun getParams(): MutableMap<String, String>? {
+                        val map = HashMap<String, String>()
+                        map.set("users_id", user_id.toString())
+                        map.set("memes_id", meme.id.toString())
+                        map.set("content", content)
+                        return map
                     }
-                }, {
-                    Log.e("Add comments", it.message.toString())
-                })
-            {
-                override fun getParams(): MutableMap<String, String>? {
-                    val map = HashMap<String, String>()
-                    map.set("users_id", user_id.toString())
-                    map.set("memes_id", meme.id.toString())
-                    map.set("content", content)
-                    return map
                 }
+                queAddComment.add(stringRequestAddComment)
             }
-            queAddComment.add(stringRequestAddComment)
+            else{
+                Toast.makeText(this, "Input terlebih dahulu comment nya", Toast.LENGTH_SHORT).show()
+            }
         }
 
         //endregion
