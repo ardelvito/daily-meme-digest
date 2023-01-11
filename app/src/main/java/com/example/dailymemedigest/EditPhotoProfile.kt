@@ -1,5 +1,6 @@
 package com.example.dailymemedigest
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -26,7 +27,9 @@ import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_add_new_meme.*
 import kotlinx.android.synthetic.main.activity_edit_photo_profile.*
+import kotlinx.android.synthetic.main.activity_edit_photo_profile.btnBackEdit
 import kotlinx.android.synthetic.main.activity_edit_photo_profile.editPhotoProfile
 import kotlinx.android.synthetic.main.fragment_setting.*
 import org.json.JSONObject
@@ -36,18 +39,22 @@ import java.util.HashMap
 
 class EditPhotoProfile : AppCompatActivity() {
     lateinit var preferences: SharedPreferences
-    val REQUEST_IMAGE_CAPTURE = 3
     var encodeImageString = ""
+    val REQUEST_IMAGE_CAPTURE = 2
 
-
-
-    fun takePicture(){
-        val i = Intent().apply {
-            action = MediaStore.ACTION_IMAGE_CAPTURE
-
-        }
+    fun takePicture() {
+        val i = Intent()
+        i.action = MediaStore.ACTION_IMAGE_CAPTURE
         startActivityForResult(i, REQUEST_IMAGE_CAPTURE)
     }
+
+//    fun takePicture(){
+//        val i = Intent().apply {
+//            action = MediaStore.ACTION_IMAGE_CAPTURE
+//
+//        }
+//        startActivityForResult(i, REQUEST_IMAGE_CAPTURE)
+//    }
 
     fun encodeImage(bm: Bitmap): String? {
         val baos = ByteArrayOutputStream()
@@ -106,23 +113,19 @@ class EditPhotoProfile : AppCompatActivity() {
         }
         q.add(stringRequest)
 
+        // Camera
+        fabPhotoCam.setOnClickListener {
+            if(ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.CAMERA) !=
+                PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.CAMERA), REQUEST_IMAGE_CAPTURE)
+            } else {
+                takePicture()
+            }
+        }
 
-//        btnPickCamera.setOnClickListener{
-//            Log.d("Pick", "Camera")
-//            if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)!=
-//                PackageManager.PERMISSION_GRANTED){
-//                ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA),
-//                    REQUEST_IMAGE_CAPTURE)
-//                Log.d("Permission", "Not Granted")
-//
-//            }
-//            else{
-//                takePicture()
-//                Log.d("Permission", "Granted")
-//
-//            }
-//        }
-
+        // Gallery
         btnOpenGallery.setOnClickListener{
             Dexter.withActivity(this)
                 .withPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -149,6 +152,29 @@ class EditPhotoProfile : AppCompatActivity() {
 
         btnSaveChange.setOnClickListener{
             uploadImage()
+        }
+
+        btnBackEdit.setOnClickListener{
+            finish()
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when(requestCode) {
+            REQUEST_IMAGE_CAPTURE -> {
+                if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    takePicture()
+                }
+                else {
+                    Toast.makeText(this, "You must grant permission to access the camera.", Toast.LENGTH_LONG).show()
+                }
+            }
         }
     }
 
@@ -201,6 +227,10 @@ class EditPhotoProfile : AppCompatActivity() {
             val bitmap= BitmapFactory.decodeStream(inputStream)
             img.setImageBitmap(bitmap)
             encodeImage(bitmap)
+        } else if (requestCode == REQUEST_IMAGE_CAPTURE) {
+            val extras = data!!.extras
+            val imageBitmap: Bitmap = extras!!.get("data") as Bitmap
+            editPhotoProfile.setImageBitmap(imageBitmap)
         }
         else{
             Log.d("msg", "gagal ganti gambar")

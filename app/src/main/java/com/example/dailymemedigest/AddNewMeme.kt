@@ -14,7 +14,7 @@ import com.android.volley.toolbox.Volley
 import com.nvt.color.ColorPickerDialog
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_add_new_meme.*
-import kotlinx.android.synthetic.main.activity_add_new_meme.btnBackDM
+import kotlinx.android.synthetic.main.activity_add_new_meme.btnBackAM
 import kotlinx.android.synthetic.main.activity_add_new_meme.newImgMemes
 import kotlinx.android.synthetic.main.activity_detail_meme.*
 import kotlinx.android.synthetic.main.fragment_setting.*
@@ -101,11 +101,7 @@ class AddNewMeme : AppCompatActivity() {
         }
 
         btnBackAM.setOnClickListener{
-            //create intent object & determine the activity target
-            val intent = Intent(this, MainActivity::class.java)
-
-            //"execute" the object and OS will launch the activity target
-            startActivity(intent)
+            finish()
         }
     }
 }

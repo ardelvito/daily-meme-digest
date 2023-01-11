@@ -40,10 +40,14 @@ class HomeFragment : Fragment() {
         rv?.adapter = HomeAdapter(memesList, user_id)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        memesList.clear()
+    override fun onResume() {
+        super.onResume()
 
+        memesList.clear()
+        getMemes()
+    }
+
+    fun getMemes() {
         val q = Volley.newRequestQueue(activity)
         val url = "https://ubaya.fun/native/160420024/memes_api/get_memes.php"
         var stringRequest = StringRequest(
@@ -82,6 +86,50 @@ class HomeFragment : Fragment() {
                 Log.e("apiresult", it.message.toString())
             })
         q.add(stringRequest)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+//        memesList.clear()
+//
+//        val q = Volley.newRequestQueue(activity)
+//        val url = "https://ubaya.fun/native/160420024/memes_api/get_memes.php"
+//        var stringRequest = StringRequest(
+//            Request.Method.POST,
+//            url,
+//            {
+//                val obj = JSONObject(it)
+//                if(obj.getString("result") == "OK"){
+//                    val data = obj.getJSONArray("data")
+//                    for(i in 0 until data.length()){
+//                        Log.d("apiresult", it)
+//
+//                        val memeObj = data.getJSONObject(i)
+//                        val meme = Meme(
+//                            memeObj.getInt("id"),
+//                            memeObj.getString("url"),
+//                            memeObj.getString("top_text"),
+//                            memeObj.getString("bottom_text"),
+//                            memeObj.getInt("users_id"),
+//                            memeObj.getInt("total_likes"),
+//                            memeObj.getString("created_at"),
+//                            memeObj.getString("top_text_color"),
+//                            memeObj.getString("bottom_text_color"),
+//                            memeObj.getInt("total_komen"),
+//                            false,
+//                            memeObj.getString("username"),
+//                            memeObj.getInt("private"),
+//                            memeObj.getInt("day_differ"),
+//                            memeObj.getInt("hours_differ")
+//                        )
+//                        memesList.add(meme)
+//                    }
+//                    updateList()
+//                }
+//            }, {
+//                Log.e("apiresult", it.message.toString())
+//            })
+//        q.add(stringRequest)
 
     }
 

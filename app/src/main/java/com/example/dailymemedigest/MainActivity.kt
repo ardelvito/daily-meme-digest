@@ -50,7 +50,16 @@ class MainActivity : AppCompatActivity() {
 
     val fragmentList:ArrayList<Fragment> = ArrayList()
 
+    override fun onResume() {
+        super.onResume()
 
+        // Navigation Bar
+        var sharedName = "com.example.dailymemedigest"
+        var preferences: SharedPreferences = getSharedPreferences(sharedName, Context.MODE_PRIVATE)
+        val idUser = preferences.getInt(Login.SHARED_PLAYER_ID, 0)
+        val bgDH = "https://ubaya.fun/native/160420024/bg/bg.jpg"
+        getDataDrawer(idUser, bgDH)
+    }
 
     private lateinit var menu : Menu
     private lateinit var menuItem : MenuItem
