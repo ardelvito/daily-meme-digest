@@ -1,6 +1,7 @@
 package com.example.dailymemedigest
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,9 @@ import com.android.volley.toolbox.Volley
 import com.nvt.color.ColorPickerDialog
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_add_new_meme.*
+import kotlinx.android.synthetic.main.activity_add_new_meme.btnBackDM
+import kotlinx.android.synthetic.main.activity_add_new_meme.newImgMemes
+import kotlinx.android.synthetic.main.activity_detail_meme.*
 import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.fragment_setting.editColorText
 
@@ -94,6 +98,14 @@ class AddNewMeme : AppCompatActivity() {
                     }
                 })
             colorPicker.show()
+        }
+
+        btnBackAM.setOnClickListener{
+            //create intent object & determine the activity target
+            val intent = Intent(this, MainActivity::class.java)
+
+            //"execute" the object and OS will launch the activity target
+            startActivity(intent)
         }
     }
 }

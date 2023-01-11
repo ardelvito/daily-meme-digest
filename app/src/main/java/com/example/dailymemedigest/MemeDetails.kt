@@ -1,6 +1,7 @@
 package com.example.dailymemedigest
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -188,5 +189,13 @@ class MemeDetails : AppCompatActivity() {
         }
 
         //endregion
+
+        btnBackDM.setOnClickListener{
+            //create intent object & determine the activity target
+            val intent = Intent(this, MainActivity::class.java)
+
+            //"execute" the object and OS will launch the activity target
+            startActivity(intent)
+        }
     }
 }
