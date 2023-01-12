@@ -202,6 +202,7 @@ class EditPhotoProfile : AppCompatActivity() {
                 val map = HashMap<String, String>()
                 map.put("user_id",id_user.toString())
                 map.put("upload", encodeImageString)
+                Log.d("image string", encodeImageString)
 //                Log.d("MAP", map.toString())
                 return map
             }
@@ -213,6 +214,7 @@ class EditPhotoProfile : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        Log.d("result ok", requestCode.toString() + REQUEST_IMAGE_CAPTURE.toString())
         if(resultCode == RESULT_OK && requestCode == 1){
 //            val extras = data?.extras
 //            extras?.let{
@@ -231,6 +233,8 @@ class EditPhotoProfile : AppCompatActivity() {
             val extras = data!!.extras
             val imageBitmap: Bitmap = extras!!.get("data") as Bitmap
             editPhotoProfile.setImageBitmap(imageBitmap)
+            encodeImage(imageBitmap)
+            Log.d("bitmap", imageBitmap.toString())
         }
         else{
             Log.d("msg", "gagal ganti gambar")
