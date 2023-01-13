@@ -238,7 +238,6 @@ class EditPhotoProfile : AppCompatActivity() {
         }
         else{
             Log.d("msg", "gagal ganti gambar")
-
         }
     }
 
